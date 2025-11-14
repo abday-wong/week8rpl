@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uiweek8/homepage.dart';
+import 'package:uiweek8/pages/separate_list_view.dart';
 
 void main() {                     // <--- Harus di luar class
   runApp(const MyApp());
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
           seedColor: Colors.deepPurple,
         ),
       ),
-      home: const Homepage(),
+      home: const listview(),
     );
   }
 }
