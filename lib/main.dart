@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uiweek8/homepage.dart';
 import 'package:uiweek8/pages/separate_list_view.dart';
+import 'package:uiweek8/pages/list_view_separate_horizontal.dart';
 
 void main() {                     // <--- Harus di luar class
   runApp(const MyApp());
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
           seedColor: Colors.deepPurple,
         ),
       ),
-      home: const listview(),
+      home: separatelistviewhorizontal(),
     );
   }
 }
