@@ -15,52 +15,64 @@ class separatelistviewhorizontal extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Horizontal List View with Separator"),
       ),
-      body: SizedBox(
-        height: 150,
-        child: ListView.separated(
-          scrollDirection: Axis.horizontal,
-          itemCount: products.length,
-          itemBuilder: (context, index) {
-            final product = products[index];
-            return Container(
-              width: 120,
-              margin: const EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
-                color: Colors.deepPurple[100],
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Column(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Center(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    product['Icon'],
-                    size: 40,
-                    color: Colors.deepPurple,
-                  ),
-                  const SizedBox(height: 10),
-                  Text(
-                    product['name'],
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    'Rp ${product['Price']}',
-                    style: const TextStyle(
-                      fontSize: 14,
-                      color: Colors.grey,
-                    ),
-                  ),
-                ],
+                children: List.generate(
+                  products.length * 2 - 1,
+                  (index) {
+                    if (index.isOdd) {
+                      return const SizedBox(width: 10);
+                    }
+                    final productIndex = index ~/ 2;
+                    final product = products[productIndex];
+                    return Container(
+                      width: 120,
+                      height: 150,
+                      margin: const EdgeInsets.all(8.0),
+                      decoration: BoxDecoration(
+                        color: Colors.deepPurple[100],
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            product['Icon'],
+                            size: 40,
+                            color: Colors.deepPurple,
+                          ),
+                          const SizedBox(height: 10),
+                          Text(
+                            product['name'],
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 5),
+                          Text(
+                            'Rp ${product['Price']}',
+                            style: const TextStyle(
+                              fontSize: 14,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
               ),
-            );
-          },
-          separatorBuilder: (context, index) {
-            return const SizedBox(width: 10);
-          },
-        ),
+            ),
+          ),
+        ],
       ),
     );
   }
